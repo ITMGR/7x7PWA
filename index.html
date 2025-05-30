@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobilná Galéria 7x7</title>
+    <meta name="description" content="Aplikácia pre zobrazenie fotografií v mriežke 7x7">
+    <meta name="theme-color" content="#2196F3">
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiTW9iaWxuw6EgR2Fsw6lyaWEgN3g3Iiwic2hvcnRfbmFtZSI6IkdhbMOpcmlhIDd4NyIsImRlc2NyaXB0aW9uIjoiQXBsaWvDoWNpYSBwcmUgem9icmF6ZW5pZSBmb3RvZ3JhZmnDrSB2IG1yaWXFvmtlIDd4NyIsInN0YXJ0X3VybCI6Ii8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMTIxMjEyIiwidGhlbWVfY29sb3IiOiIjMjE5NkYzIiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB3aWR0aD0nMTkyJyBoZWlnaHQ9JzE5Micgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9JyUyMzIxOTZGMycgc3Ryb2tlLXdpZHRoPScyJyUzRSUzQ3BhdGggZD0nbTMgMTYgNS01IDUtNSUzQ3BhdGggZD0nbTEyIDcgOCA4JTNDcGF0aCBkPSdtMjEgNS01IDUlM0MvZyUzRSUzQy9zdmclM0UiLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0=">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header__title">📸 Mobilná Galéria 7x7</h1>
+            <button class="btn btn--primary btn--lg" id="loadPhotosBtn">
+                📁 Načítaj fotografie
+            </button>
+        </header>
+
+        <!-- File Input (hidden) -->
+        <input type="file" 
+               id="photoInput" 
+               multiple 
+               accept="image/jpeg,image/png,image/webp,image/gif"
+               style="display: none;">
+
+        <!-- Photo Count Info -->
+        <div class="photo-info" id="photoInfo" style="display: none;">
+            <span class="photo-count">Načítané: <span id="photoCount">0</span>/49 fotografií</span>
+            <button class="btn btn--secondary btn--sm" id="resetBtn">🔄 Reset</button>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading" style="display: none;">
+            <div class="loading__spinner"></div>
+            <p>Načítavam fotografie...</p>
+        </div>
+
+        <!-- Photo Grid -->
+        <main class="photo-grid" id="photoGrid">
+            <div class="empty-state" id="emptyState">
+                <div class="empty-state__icon">📷</div>
+                <h2>Vyberte fotografie</h2>
+                <p>Kliknite na tlačidlo vyššie a vyberte až 49 fotografií z vašej galérie</p>
+            </div>
+        </main>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox" style="display: none;">
+            <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
+            <div class="lightbox__container">
+                <button class="lightbox__close" id="lightboxClose">✕</button>
+                <button class="lightbox__nav lightbox__prev" id="lightboxPrev">‹</button>
+                <img class="lightbox__image" id="lightboxImage" alt="Fotografia">
+                <button class="lightbox__nav lightbox__next" id="lightboxNext">›</button>
+                <div class="lightbox__info">
+                    <span id="lightboxCounter">1 / 1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Mobilná Galéria 7x7 v1.0.0</p>
+            <button class="btn btn--outline btn--sm" id="installBtn" style="display: none;">
+                📱 Nainštalovať aplikáciu
+            </button>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
